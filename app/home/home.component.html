@@ -1,0 +1,32 @@
+
+
+<div class="container">
+    <div class="row">
+        <table border="1">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Url</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <ngx-skeleton-loader count="10" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+            </tr>
+              <tr *ngFor="let row of dataItems | 
+              paginate: { itemsPerPage: 15, currentPage: page, totalItems:totalLength }; let i=index">
+                <td>{{ row.title }}</td>
+                <td>{{ row.url }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div cl="pagination">
+            <pagination-controls previousLabel="Prev"
+            nextLabel="Next" (pageChange)="page=$event"
+            >
+
+            </pagination-controls>
+          </div>
+    </div>
+</div>
+
